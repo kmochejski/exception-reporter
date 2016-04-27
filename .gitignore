@@ -3,3 +3,9 @@
 /deps
 erl_crash.dump
 *.ez
+
+# IntelliJ IDEA related files
+.idea
+*.iml
+*.ipr
+*.iws

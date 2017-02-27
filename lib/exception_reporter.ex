@@ -4,8 +4,8 @@ defmodule ExceptionReporter do
   def start_link(_args) do
     res = GenEvent.start_link(name: __MODULE__)
     case res do
-      {:ok, pid} ->
-        notifiers
+      {:ok, _pid} ->
+        notifiers()
         |> Enum.each(&register_notifier/1)
     end
     res
@@ -19,7 +19,7 @@ defmodule ExceptionReporter do
     Application.get_env(:exception_reporter, :notifiers, [])
   end
 
-  defp register_notifier({notifier, name} = handler) do
+  defp register_notifier({_notifier, name} = handler) do
     GenEvent.add_handler(__MODULE__, handler, name)
   end
 
